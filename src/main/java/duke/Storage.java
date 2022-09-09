@@ -90,6 +90,10 @@ public class Storage {
             FileWriter fw = new FileWriter("./data/saveFile.txt");
             ArrayList<Task> lst = tL.getTaskArr();
             for (Task task : lst) {
+                if (task instanceof Todo) {
+                    fw.write(task.toString() + "[TAGS] " + task.printTags() + "\n");
+                    continue;
+                }
                 fw.write(task.toString() + "\n");
             }
             fw.close();

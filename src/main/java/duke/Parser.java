@@ -70,6 +70,10 @@ public class Parser {
             new SaveCommand().execute(this);
         } else if (line.startsWith("find")) {
             new FindCommand().execute(this);
+        } else if (line.startsWith("tag")) {
+            new TagCommand().execute(this);
+        } else if (line.startsWith("seetags")) {
+            new SeeTagsCommand().execute(this);
         } else {
             Ui.show("OOPS!!! I'm sorry, but I don't know that that means :(");
         }

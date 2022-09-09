@@ -45,13 +45,27 @@ public class Todo extends Task {
         char isDoneString = s.charAt(4); //'[T][X]' checks if X is present
         char X = 'X';
         boolean isDone = isDoneString == X;
+        int idxOfTag = s.indexOf("[TAGS]");
 
-        String description = s.substring("[T][X] ".length());
-        return new Todo(description, isDone);
+        String description = s.substring("[T][X] ".length(), idxOfTag);
+        Todo result = new Todo(description, isDone);
+
+        // Extracting tags and adding them
+        String tagBack = s.substring(idxOfTag + "[TAGS] ".length());
+        String[] tags = tagBack.split("#");
+
+        for (String str: tags) {
+            if (str.equals("") || str.equals(" ")) {
+                continue;
+            }
+            result.addTag(str);
+        }
+        return result;
     }
 
-    public static void main(String[] args) throws DukeException {
-        String testString = "[T][X] read book";
-        System.out.println(stringToTodo(testString).toString().equals(testString));
-    }
+
+//    public static void main(String[] args) throws DukeException {
+//        String testString = "[T][X] read book";
+//        System.out.println(stringToTodo(testString).toString().equals(testString));
+//    }
 }

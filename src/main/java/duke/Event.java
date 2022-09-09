@@ -64,8 +64,8 @@ public class Event extends Task {
         return new Event(description, dateString, isDone);
     }
 
-    public static void main(String[] args) throws DukeException {
-        String testString = "[E][ ] project meeting (at: Aug 6th 2-4pm)";
-        System.out.println(stringToEvent(testString).toString().equals(testString));
-    }
+//    public static void main(String[] args) throws DukeException {
+//        String testString = "[E][ ] project meeting (at: Aug 6th 2-4pm)";
+//        System.out.println(stringToEvent(testString).toString().equals(testString));
+//    }
 }
